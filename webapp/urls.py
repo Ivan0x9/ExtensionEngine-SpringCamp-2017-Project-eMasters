@@ -20,10 +20,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^courses/', include('courses.urls')),
     url(r'^forum/', include('forum.urls')),
-    url(r'^$', include('users.urls')),
+    url(r'^', include('users.urls')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
