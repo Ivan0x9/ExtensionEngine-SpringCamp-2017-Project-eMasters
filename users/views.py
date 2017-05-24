@@ -1,11 +1,12 @@
 from django.shortcuts import render,reverse,redirect
 from .forms import CreateUser
 from django.views.generic.edit import CreateView
+from django.views.generic.base import RedirectView
 from django.views.generic import FormView
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 def home(request):
     context = {
         "title": "EMasters",
@@ -53,4 +54,10 @@ class LoginView(FormView):
     def get_success_url(self):
         return reverse('home')
 
+class LogoutView(RedirectView):
 
+    url = '/'
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return super(LogoutView, self).get(request, *args, **kwargs)
