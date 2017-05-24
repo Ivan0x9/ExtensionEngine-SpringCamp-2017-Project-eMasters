@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}EMasters{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel='shortcut icon' type='image/x-icon' href = "{% static 'img/favicon.png' %}" />
+</head>
+
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" >
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://127.0.0.1:8000"><img src ="{% static 'img/logo.jpg' %}"/></a>
+                </div>
+                <div class="collapse navbar-collapse" id ="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Register</a></li>
+                        <li><a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+        <!-- jumbotron -->
+        <div class="jumbotron" id = "jumbotron" style="background-image: url('{% static 'img/header.jpg' %}');" >
+            <div class="container text-center" >
+                <p>eMasters je online edukacijska platforma koja pruža učenje osnovnih i naprednih tehnologija korištene u IT-u.</p>
+            </div>
+        </div>
+        <!-- End jumbrotron-->
+        <!-- Main container -->
+        <div class="container text-center" id="main-container">
+            <div class="row">
+                <h3>Što mi radimo?</h3><br>
+                <div class="col-sm-4">
+                    <img src="{% static 'img/programming.jpeg' %}" class="img-responsive" style="width:100%" alt="Image">
+                    <h3>Online edukacija</h3>
+                    <p>Pristup modulima za učenje osnova korištenja SQL baze podataka, Python-a i Django-a. Prilagođeno svima koji namjeravaju raditi na raznim projektima koji uključuju navedene tehnologije.</p>
+
+                </div>
+                <div class="col-sm-4">
+                    <img src="{% static 'img/radionice.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+                    <h3>Radionice</h3>
+                    <p>Tjedne radionice koje održavaju iskusni predavači. Kroz radionice sudionici se upoznavaju s praktičnom primjenom i osnovama web razvoja. Sudionici stječu iskustvo surađujući međusobno u grupama kako bi razvili zajednički projekt.</p>
+
+                </div>
+                <div class="col-sm-4">
+                    <img src="{% static 'img/online-test.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+                    <h3>Online testovi</h3>
+                    <p>Online testovi daju povratne informacije o razini usvojenosti znanja sudionika. Za uspješno položene testove svakog modula se dobije certifikat o položenom modulu.</p>
+
+                </div>
+            </div>
+        </div>
+        <!-- End main container -->
+
+        <script src ="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    </body>
+
+
+</html>

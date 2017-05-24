@@ -1,0 +1,23 @@
+{% extends 'courses/base.html' %}
+{% block  title %} Course Details {% endblock %}
+
+{% block body %}
+<!--<img src="{{course.course_logo.url}}">
+<h1>{{ course.course_name }}</h1>-->
+{% if error_message %}
+<p><strong>{{ error_message}}</strong>></p>
+{% endif %}
+    {%for chapter in course.chapter_set.all %}
+        <input type="radio" id="chapter{{forloop.counter}}" name="chapter" value="{{chapter.id}}"/>
+        <label for = "chapter{{forloop.counter}}">
+            {{chapter.chapter_name}}
+
+        </label><br>
+    {% endfor %}
+    <li class="">
+        <a href="{% url 'courses:chapter-add' %}">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+            Add Chapter
+         </a>
+     </li>
+{% endblock %}
