@@ -1,5 +1,5 @@
 from django.shortcuts import render,reverse,redirect
-from .forms import CreateUser
+from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.views.generic.base import RedirectView
 from django.views.generic import FormView
@@ -16,7 +16,7 @@ def home(request):
 
 
 class registration(CreateView):
-    form = CreateUser
+    form = UserCreationForm
     model = User
     fields = ['username' ,'password']
     template_name = 'users/register_form.html'
