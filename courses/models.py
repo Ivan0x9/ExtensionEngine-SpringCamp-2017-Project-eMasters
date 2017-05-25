@@ -1,34 +1,42 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
-
-
 class Course(models.Model):
-    course_name = models.CharField(max_length=25)
-    course_logo = models.FileField(null=False, blank=False, default='')
-    course_creating_date = models.DateTimeField(auto_now_add=True)
-
+    name = models.CharField(max_length=25)
+    logo = models.FileField(null=False, blank=False)
+    date_created = models.DateTimeField(auto_now_add=True)
     def get_absolute_url(self):
-        return reverse('courses:detail', kwargs={'pk': self.pk})
+        return reverse('courses:detail', kwargs={'pk':self.pk})
 
     def _str_(self):
         # string repreetnacija objekta
-        return self.course_name
+        return self.name
 
 
 class Chapter(models.Model):
-    chapter_name = models.CharField(max_length=25)
-    chapter_creating_date = models.DateTimeField(auto_now_add=True)
-    course = models.ForeignKey(Course, default=1, on_delete=models.CASCADE)
-
-    def get_absolute_url(self):
-        return reverse("chapter", kwargs={"course_name": self.course })
+    name = models.CharField(max_length=25)
+    date_created = models.DateTimeField(auto_now_add=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def _str_(self):
         # string repreetnacija objekta
         return   self.chapter_name
 
-class Lesson(models.Model):
-    lesson_text = models.CharField(max_length=20)
-    chapter_creating_date = models.DateTimeField(auto_now_add=True)
-    lesson_fk = models.ForeignKey(Chapter, default=1)
+class Block(models.Model):
+    title = models.CharField(max_length=255)
+    date_created = models.DateTimeField(auto_now_add=True)
+    chapter = models.ForeignKey(Chapter)
+
+class TextBlock(Block):
+    text = models.TextField()
+
+class VideoBlock(Block):
+    link = models.FileField(null=False, blank=False)
+
+class ImageBlock(Block):
+    image = models.FileField()
+
+class QuizBlock(Block):
+    question = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255)
+
