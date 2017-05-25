@@ -10,12 +10,11 @@
     {%for chapter in course.chapter_set.all %}
         <input type="radio" id="chapter{{forloop.counter}}" name="chapter" value="{{chapter.id}}"/>
         <label for = "chapter{{forloop.counter}}">
-            {{chapter.chapter_name}}
-
+            <a href=" {% url 'courses:chapter-detail' course_pk=course.pk pk=chapter.pk %}" >{{chapter.pk}} - {{chapter.name}}</a>
         </label><br>
     {% endfor %}
     <li class="">
-        <a href="{% url 'courses:chapter-add' %}">
+        <a href="{% url 'courses:chapter-add' pk=course.id  %}">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
             Add Chapter
          </a>

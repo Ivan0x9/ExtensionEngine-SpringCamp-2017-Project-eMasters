@@ -4,7 +4,9 @@ from django.core.urlresolvers import reverse
 class Course(models.Model):
     name = models.CharField(max_length=25)
     logo = models.FileField(null=False, blank=False)
-    images = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    def get_absolute_url(self):
+        return reverse('courses:detail', kwargs={'pk':self.pk})
 
     def _str_(self):
         # string repreetnacija objekta
@@ -20,18 +22,21 @@ class Chapter(models.Model):
         # string repreetnacija objekta
         return   self.chapter_name
 
-class Lesson(models.Model):
+class Block(models.Model):
     title = models.CharField(max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
     chapter = models.ForeignKey(Chapter)
 
-class TextLesson(Lesson):
+class TextBlock(Block):
     text = models.TextField()
 
-class Multimedia(Lesson):
+class VideoBlock(Block):
     link = models.FileField(null=False, blank=False)
 
-class Quiz(Lesson):
+class ImageBlock(Block):
+    image = models.FileField()
+
+class QuizBlock(Block):
     question = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
 

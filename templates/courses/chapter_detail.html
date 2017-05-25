@@ -1,0 +1,53 @@
+{% extends 'courses/base.html' %}
+{% block  title %} Chapter Details {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <li class="">
+                            <a href="{% url 'courses:text-add' course.pk chapter.pk  %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                                Add text block
+                             </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{% url 'courses:video-add' course.pk chapter.pk  %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                                Add video
+                             </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{% url 'courses:images-add' course.pk chapter.pk  %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                                Add image
+                             </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{% url 'courses:quiz-add' course.pk chapter.pk  %}">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                                Add quiz
+                             </a>
+                        </li>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
