@@ -1,10 +1,12 @@
-{% extends 'forum/base.html' %}
+{% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 {% load static %}
+
 {% block content %}
   <div class="container">
-    <h2>All comments on theme: {{ title }}</h2>
-    <div class="col-lg-6 pull-left topic time" style="background-color:white;">
+    <div class="topic-title"><h2>All comments on theme: {{ title }}</h2></div>
+    <div class="col-lg-6 pull-left topic topic-author time">
       <div class="first">
       <span class="span-left glyphicon glyphicon-user author"> <strong>{{ first_comment_author }}</strong></span>
       <span class="span-right time"><strong> {{ first_comment_timestamp }} </strong></span>
@@ -17,7 +19,7 @@
     </div>
 
 
-    <div class="col-lg-6 pull-right topic" style="background-color:white;">
+    <div class="col-lg-6 pull-right topic">
       <div class="comment">
         <span class="span-right comment">Comment:   <strong> {{ first_comment|safe }}  </strong></span>
       </div>

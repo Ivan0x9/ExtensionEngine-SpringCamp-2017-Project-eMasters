@@ -1,26 +1,15 @@
-{% extends 'courses/base.html '%}
-{% block title %} Add a new course {% endblock %}
+{% extends 'base.html '%}
+{% block contenttitle %} <div class="container-header container-header-text"><h2>- COURSE -</h2></div> {% endblock %}
 {% block album_active %} active {% endblock %}
 
-{% block body %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% include 'courses/form_template.html'%}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+    <form class="entry-form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'courses/form_template.html'%}
+        <div class="col-sm-offset-6 col-sm-12">
+            <button type="submit">Submit</button>
         </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

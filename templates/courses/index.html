@@ -1,23 +1,24 @@
-{% extends 'courses/base.html' %}
-{% block body %}
+{% extends 'base.html' %}
+
+
+{% block content %}
 
 {% if all_courses %}
-    <h3>All courses:</h3>
-    <ul>
-        {% for course in all_courses %}
-        <div class="col-sm-4 col-lg-2">
-            <div class="thumbnail">
-             <a href="{% url 'courses:detail' course.id %}">
-                <img src="{{ course.course_logo.url }}" class="img-responsive" />
-             </a>
-
+<div class="container-header container-header-text"><h3>COURSES</h3></div>
+<ul class="course-content">
+    {% for course in all_courses %}
+    <div class="col-sm-4 col-lg-2">
+        <div class="thumbnail">
+            <div class="thumbnail-img">
+                <a href="{% url 'courses:detail' course.id %}">
+                    <img src="{{ course.logo.url }}" class="img-responsive" />
+                </a>
+            </div>
             <div class="caption">
-                <h2>{{ course.course_name}}</h2>
-
-                <!-- Details -->
+                <h2>{{ course.name }}</h2>
+            <!-- Details -->
                 <a href="{% url 'courses:detail' course.id %}" class="btn btn-primary btn-sm">View Details</a>
-
-                <!-- Delete -->
+            <!-- Delete -->
                 <form action="{% url 'courses:course-delete' course.id %}" method="post" style="display:inline;">
                     {% csrf_token %}
                     <input type="hidden" name="course_id" value="{{ course.id }}" />
@@ -25,8 +26,7 @@
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </form>
-
-                <!-- Update -->
+            <!-- Update -->
                 <form action="{% url 'courses:course-update' course.id %}" method="post" style="display:inline;">
                     {% csrf_token %}
                     <input type="hidden" name="course_id" value="{{ course.id }}" />
@@ -35,13 +35,11 @@
                     </button>
                 </form>
             </div>
-
-
-            </div>
         </div>
-        {% endfor %}
-    </ul>
+    </div>
+    {% endfor %}
+</ul>
 {% else %}
-    <h3>There is no courses</h3>
+<h3>There are no courses</h3>
 {% endif %}
 {% endblock %}

@@ -24,7 +24,7 @@ class registration(CreateView):
     model = User
     fields = ['username' ,'password']
     template_name = 'users/register_form.html'
-    
+
     def form_valid(self, form):
         form.instance.save()
         group=Group.objects.get(name='student')
@@ -34,7 +34,7 @@ class registration(CreateView):
         return super(registration, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('courses')
 
 
 class LoginView(FormView):

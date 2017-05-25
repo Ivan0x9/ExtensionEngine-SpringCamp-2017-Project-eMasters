@@ -5,7 +5,6 @@ def create_user_group(apps , schema_editor):
 
     Group.objects.create(name='student')
     Group.objects.create(name='profesor')
-    Group.objects.create(name='admin')
 
 
 class Migration(migrations.Migration):

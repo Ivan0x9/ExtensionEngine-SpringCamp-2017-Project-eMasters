@@ -18,6 +18,10 @@ html, body{
     font-family: "Gotham SSm A","Gotham SSm B",Gotham,Arial,Helvetica,sans-serif;
 }
 
+li{
+    list-style: none;
+}
+
 h1, h2, h3, h4, h5, h6{
     font-family: 'Nunito', sans-serif;
 }
@@ -26,10 +30,40 @@ p{
      font-family: 'PT Sans', sans-serif;
 }
 
+input[type="radio"]{
+    visibility: hidden;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
 
+#container{
+    min-height: 100%;
+    position: relative;
+
+    margin-top: 50px;
+}
+
+#content{
+    padding-bottom: 60px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #282828;
+
+    text-align: center;
+}
+
+footer p{
+    margin: 0;
+    color: #8e8e8e;
+    margin-top: 20px;
+}
 
 /* BASE STYLESHEET */
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -51,6 +85,7 @@ p{
 /*--------------------------------------------------------------------------------------------------------------------*/
 #jumbotron{
     background-image: url("img/header.jpg");
+    background-size: cover;
     padding-top: 250px;
     padding-bottom: 280px;
     background-position: 100% 40%;
@@ -115,23 +150,6 @@ p{
     padding: 20px;
 }
 
-footer{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    background: #282828;
-    text-align: center;
-
-    margin-top: 20px;
-}
-
-footer p{
-    margin: 0;
-    color: #8e8e8e;
-}
-
 /* ABOUT STYLESHEET */
 /*--------------------------------------------------------------------------------------------------------------------*/
 .about-container{
@@ -156,68 +174,91 @@ footer p{
 .contact-container{
     display: block;
     height: 100%;
-
-    margin-top: 50px
 }
 
-#contact-form h1{
-    font-weight: bold;
-}
-
-#contact-form label{
-    background-color: cadetblue;
-    padding: 10px;
-    display: block;
-    float: left;
-
-    color: snow;
-}
-#contact-form input{
-    width: 53.5%;
-    display: block;
-    position: relative;
-    left: 20px;
-}
-
-#contact-form textarea{
-    width: 53.5%;
-    display: block;
-    position: relative;
-    left: 60px;
-}
-
-#contact-form button{
-    background-color: #4d6869;
-    padding: 10px;
-    border-radius: 5px;
-
-    color: #7facad;
-}
-
-#contact-form button:hover{
-    background-color: cadetblue;
+/* COURSES, CHAPTER, LESSON DETAIL STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
+.container-header-text{
     color: white;
 }
 
-/*--------------------------------------------------------------------------------------------------------------------*/
-.centered-form{
-	margin-top: 100px;
+.course-content{
+    width: 100%;
+    margin-top: 100px;
+
+
 }
 
-.centered-form .panel{
-	background: rgba(255, 255, 255, 0.8);
-	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+.thumbnail-img{
+    width: 100%;
+    min-height: 5em;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
+
+.thumbnail img{
+    max-width: 100%;
+    height: auto;
+}
+
+.chapter-section{
+    margin-top: 10px;
+    padding: 10px;
+    background: #2d8ac7;
+    border-radius: 3px;
+}
+
+.chapter-section:hover{
+    background: #38b6c7;
+}
+
+.chapter-section a{
+    text-decoration: none;
+    display: block;
+    color: snow;
+}
+
+.add-button{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+
+.add-button a{
+    display: block;
+    color: snow;
+    padding-left: 30px;
+
+    text-decoration: none;
+}
+
+.add-button:hover{
+    background-color: #43a074;
 }
 
 /* FORUM STYLESHEET */
 /*--------------------------------------------------------------------------------------------------------------------*/
+.topic-title{
+    color: white;
+    background-color: #2d8ac7;
+    padding: 10px;
+}
+
 .container .topic{
     background: #D2D5D8;
     margin-top: 50px;
     padding-top: 30px;
     color: #475760;
     padding-bottom:30px;
+
 }
+
+.container .topic-author{
+    background-color:white;
+}
+
 .container .topic p{
     color: #DDDAE8;
 }
@@ -251,7 +292,7 @@ color: #475760;
     padding-left: 200px;
     padding-left: 150px;
     padding-bottom: 20px;
-    font-size: 20;
+    font-size: 20px;
     font-family: Helvetica;
 }
 
@@ -270,7 +311,7 @@ padding-top: 20px; }
 
 .container .comment{
     padding-top: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 22px;
 }
 
 .container .new-comment{
@@ -278,4 +319,62 @@ padding-top: 20px; }
     padding-bottom: 50px;
 }
 
+/* FORMS STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
+.chapter-form-container{
+    margin-top: 50px;
+}
 
+.entry-form{
+    margin-top: 100px;
+
+}
+.entry-form h1{
+    font-weight: bold;
+}
+
+.entry-form label{
+    background-color: cadetblue;
+    padding: 5px;
+    display: block;
+    float: left;
+
+    color: snow;
+}
+.entry-form input{
+    width: 53.5%;
+    display: block;
+    position: relative;
+    left: 20px;
+}
+
+.entry-form .input-field{
+    width: 53.5%;
+    display: block;
+    position: relative;
+    left: 20px;
+
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.entry-form textarea{
+    width: 53.5%;
+    display: block;
+    position: relative;
+    left: 60px;
+}
+
+.entry-form button{
+    background-color: #4d6869;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #7facad;
+}
+
+.entry-form button:hover{
+    background-color: cadetblue;
+    color: white;
+}

@@ -29,12 +29,13 @@ class CourseCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('courses:detail', kwargs={'pk':self.object.id})
 
-    def get_success_url(self):
-        return reverse('courses', kwargs={ 'pk': self.object.id })
 
 class CourseUpdate(UpdateView):
     model = Course
     fields = ['name', 'logo']
+
+    def get_success_url(self):
+        return reverse_lazy('courses:detail', kwargs={'pk':self.object.id})
 
 class CourseDelete(DeleteView):
     model = Course
