@@ -1,3 +1,5 @@
+/* MAIN STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
 * {
         margin: 0;
         padding: 0;
@@ -7,29 +9,48 @@
         vertical-align: baseline;
         background: transparent;
  }
- body{
-     background-color: #E8E8E8;
-     font-family: "Gotham SSm A","Gotham SSm B",Gotham,Arial,Helvetica,sans-serif;
+
+html, body{
+    min-height: 100% !important;
+    height: 100%;
+
+    background-color: #E8E8E8;
+    font-family: "Gotham SSm A","Gotham SSm B",Gotham,Arial,Helvetica,sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Nunito', sans-serif;
 }
 
 p{
-     font-family:Arial, Helvetica, sans-serif;
+     font-family: 'PT Sans', sans-serif;
 }
 
 ::-webkit-scrollbar {
     display: none;
 }
+
+
+/* BASE STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
+.navbar{
+    border-style: none;
+}
+
+.navbar-brand img{
+    width: 140px;
+    height: 20px;
+}
+
 .container-fluid{
     background-color: #3D3B3E;
 }
 
 
-.navbar-brand img{
-     width: 140px;
-        height: 20px;
-}
-
+/* HOME STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
 #jumbotron{
+    background-image: url("img/header.jpg");
     padding-top: 250px;
     padding-bottom: 280px;
     background-position: 100% 40%;
@@ -37,19 +58,15 @@ p{
 }
 #jumbotron .container.text-center{
     padding-top: 15px;
-    background: #11272D;
+    background: rgba(17, 39, 45, 0.85);
+    border-radius: 10px;
 }
 #jumbotron p{
     font-size: 2em;
 }
 
-.well{
-    text-align: justify;
-}
-.well span{
-    font-size: 25px;
-    padding-bottom: 10px;
-
+.jumbotron{
+    margin-bottom: 0;
 }
 
 #main-container p{
@@ -57,15 +74,132 @@ p{
     padding-bottom: 20px;
 
 }
-.row{
-    padding-bottom: 50px;
-}
-.row p{
-    font-size: 18px;
-    text-align: justify;
-    color: #333333;
+
+.container-header{
+    background-color: cadetblue;
+    text-align: center;
+    padding: 10px;
 }
 
+.container-header h2{
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: snow;
+}
+
+.well{
+    background-image: none;
+    text-align: justify;
+    height: 550px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0);
+    border: none;
+
+    background-color: transparent;
+    padding: 0;
+}
+.well img{
+    width: 100%;
+}
+
+.well h3{
+    text-align: center;
+    background-color: #2d8ac7;
+
+    padding: 10px;
+    margin: 0;
+}
+
+.well p{
+    font-size: 18px;
+    text-align: justify;
+    padding: 20px;
+}
+
+footer{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background: #282828;
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+footer p{
+    margin: 0;
+    color: #8e8e8e;
+}
+
+/* ABOUT STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
+.about-container{
+    margin-top: 50px;
+    width: 100%;
+    display: block;
+    background-image: url("img/about-bg.jpeg");
+    background-size: cover;
+
+    padding: 200px;
+    text-align: center;
+    color: white;
+}
+
+#about-text{
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+
+    font-size: 2em;
+}
+
+.contact-container{
+    display: block;
+    height: 100%;
+
+    margin-top: 50px
+}
+
+#contact-form h1{
+    font-weight: bold;
+}
+
+#contact-form label{
+    background-color: cadetblue;
+    padding: 10px;
+    display: block;
+    float: left;
+
+    color: snow;
+}
+#contact-form input{
+    width: 53.5%;
+    display: block;
+    position: relative;
+    left: 20px;
+}
+
+#contact-form textarea{
+    width: 53.5%;
+    display: block;
+    position: relative;
+    left: 60px;
+}
+
+#contact-form button{
+    background-color: #4d6869;
+    padding: 10px;
+    border-radius: 5px;
+
+    color: #7facad;
+}
+
+#contact-form button:hover{
+    background-color: cadetblue;
+    color: white;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 .centered-form{
 	margin-top: 100px;
 }
@@ -75,7 +209,8 @@ p{
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
 
-/* forum CSS*/
+/* FORUM STYLESHEET */
+/*--------------------------------------------------------------------------------------------------------------------*/
 .container .topic{
     background: #D2D5D8;
     margin-top: 50px;
@@ -113,35 +248,34 @@ color: #475760;
 }
 
 .author{
-padding-left: 200px;
-padding-left: 150px;
-padding-bottom: 20px;
-font-size: 20;
-font-family: Helvetica;
+    padding-left: 200px;
+    padding-left: 150px;
+    padding-bottom: 20px;
+    font-size: 20;
+    font-family: Helvetica;
 }
 
 .time{
-padding-left: 50px;
-font-size: 18x;
-font-family: Helvetica;
+    padding-left: 50px;
+    font-size: 18px;
 }
 .first{
 padding-top: 20px; }
 
 .container .others{
-padding-bottom: 16px;
-font-size: 18x;
-font-family: Helvetica;
+    padding-bottom: 16px;
+    font-size: 18px;
+    font-family: Helvetica;
 }
 
 .container .comment{
-padding-top: 20px;
-padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .container .new-comment{
- padding-top: 50px;
- padding-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 

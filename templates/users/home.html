@@ -1,79 +1,40 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}EMasters{% endblock %}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-        <link rel='shortcut icon' type='image/x-icon' href = "{% static 'img/favicon.png' %}" />
-</head>
+{% block content %}
+    <!-- jumbotron -->
+<div class="jumbotron" id ="jumbotron">
+    <div class="container text-center">
+        <p>eMasters is an online education platform intended for learning basic and advanced use of IT technologies.</p>
+    </div>
+</div>
 
-    <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" >
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="http://127.0.0.1:8000"><img src ="{% static 'img/logo.jpg' %}"/></a>
-                </div>
-                <div class="collapse navbar-collapse" id ="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
-                        {% else %}
-                        <li><a href="{% url 'registration-register' %}"><span class="glyphicon glyphicon-user"></span>&nbsp;Register</a></li>
-                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- End Navbar -->
-
-        <!-- jumbotron -->
-        <div class="jumbotron" id = "jumbotron" style="background-image: url('{% static 'img/header.jpg' %}');" >
-            <div class="container text-center" >
-                <p>eMasters je online edukacijska platforma koja pruža učenje osnovnih i naprednih tehnologija korištene u IT-u.</p>
+<div class="container-header"><h2>What we do?</h2></div>
+<br>
+<div class="container text-center" id="main-container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well">
+                <img src="{% static 'img/programming.jpeg' %}" class="img-responsive" alt="Online education">
+                <h3>Online education</h3>
+                <p>Access learning modules for basic usage of SQL databases, Python and Django. Customized for for everyone who intends to work on various projects using the specified technologies.</p>
             </div>
         </div>
-        <!-- End jumbrotron-->
-        <!-- Main container -->
-        <div class="container text-center" id="main-container">
-            <div class="row">
-                <h3>Što mi radimo?</h3><br>
-                <div class="col-sm-4">
-                    <img src="{% static 'img/programming.jpeg' %}" class="img-responsive" style="width:100%" alt="Image">
-                    <h3>Online edukacija</h3>
-                    <p>Pristup modulima za učenje osnova korištenja SQL baze podataka, Python-a i Django-a. Prilagođeno svima koji namjeravaju raditi na raznim projektima koji uključuju navedene tehnologije.</p>
 
-                </div>
-                <div class="col-sm-4">
-                    <img src="{% static 'img/radionice.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
-                    <h3>Radionice</h3>
-                    <p>Tjedne radionice koje održavaju iskusni predavači. Kroz radionice sudionici se upoznavaju s praktičnom primjenom i osnovama web razvoja. Sudionici stječu iskustvo surađujući međusobno u grupama kako bi razvili zajednički projekt.</p>
-
-                </div>
-                <div class="col-sm-4">
-                    <img src="{% static 'img/online-test.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
-                    <h3>Online testovi</h3>
-                    <p>Online testovi daju povratne informacije o razini usvojenosti znanja sudionika. Za uspješno položene testove svakog modula se dobije certifikat o položenom modulu.</p>
-
-                </div>
+        <div class="col-md-4">
+            <div class="well">
+                <img src="{% static 'img/radionice.jpg' %}" class="img-responsive" alt="Workshops">
+                <h3>Workshops</h3>
+                <p>Weekly workshops held by experienced instructors. Through the workshops, the participants become familiar with practical work and basic web development. Participants gain experience working together in teams in order to finnish a common project.</p>
             </div>
         </div>
-        <!-- End main container -->
-
-        <script src ="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-    </body>
-
-
-</html>
+        <div class="col-md-4">
+            <div class="well">
+                <img src="{% static 'img/online-test.jpg' %}" class="img-responsive" alt="Online tests">
+                <h3>Online tests</h3>
+                <p>Online tests give feedback about the participants knowledge level. For every mastered test of a module, a certificat is granted.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

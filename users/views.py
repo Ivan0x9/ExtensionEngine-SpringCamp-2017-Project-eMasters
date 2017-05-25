@@ -7,11 +7,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from .forms import ContactForm
+from django.core.mail import EmailMessage
+from django.template.loader import get_template
+
+
 def home(request):
     context = {
         "title": "EMasters",
-        }
-
+    }
     return render(request, "users/home.html", context)
 
 
@@ -61,3 +65,37 @@ class LogoutView(RedirectView):
     def get(self, request, *args, **kwargs):
         logout(request)
         return super(LogoutView, self).get(request, *args, **kwargs)
+
+def about(request):
+    form_class = ContactForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            contact_name = request.POST.get(
+                'contact_name'
+                , '')
+            contact_email = request.POST.get(
+                'contact_email'
+                , '')
+            form_content = request.POST.get('content', '')
+
+            # Email the profile with the
+            # contact information
+            template = get_template('contact_template.txt')
+
+        content = template.render({ 'contact_name': contact_name, 'contact_email': contact_email, 'form_content': form_content, })
+
+        email = EmailMessage(
+            "New contact form submission",
+            content,
+            "Your website" + '',
+            ['youremail@gmail.com'],
+            headers={'Reply-To': contact_email}
+        )
+        email.send()
+        return redirect('about')
+
+    return render(request, "users/about.html", { 'form': form_class, })
+

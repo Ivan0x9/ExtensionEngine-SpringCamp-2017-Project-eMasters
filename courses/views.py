@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.urlresolvers import reverse_lazy, reverse
+
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.views import  generic
 from django.views.generic import  View
@@ -27,6 +28,9 @@ class CourseCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('courses:detail', kwargs={'pk':self.object.id})
+
+    def get_success_url(self):
+        return reverse('courses', kwargs={ 'pk': self.object.id })
 
 class CourseUpdate(UpdateView):
     model = Course
